@@ -13,4 +13,7 @@
     <string name="edit_restaurant_menu">Edit Restaurant Menu</string>
     <string name="edit_restaurant_details">Edit Restaurant Details</string>
     <string name="logout">Logout</string>
+    <!-- Confirm Order -->
+    <string name="enter_confirmation_id">Enter Confirmation ID</string>
+    <string name="submitConfirmationId">Submit</string>
 </resources>
