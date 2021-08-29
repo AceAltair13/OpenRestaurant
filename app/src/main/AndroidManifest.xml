@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OpenRestaurant">
         <activity
+            android:name=".CustomerHome"
+            android:exported="true" />
+        <activity
             android:name=".ConfirmOrder"
             android:exported="true" />
         <activity

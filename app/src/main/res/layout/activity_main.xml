@@ -32,12 +32,12 @@
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingVertical="12dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
+        android:paddingVertical="12dp"
         android:text="@string/continue_as_customer"
         android:textColor="@color/primaryTextColor"
         app:icon="@drawable/ic_baseline_person_24"
@@ -63,11 +63,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         app:layout_constraintEnd_toEndOf="@+id/customerLoginButton"
         app:layout_constraintStart_toStartOf="@+id/customerLoginButton"
         app:layout_constraintTop_toBottomOf="@+id/divider"
-        app:startIconDrawable="@drawable/ic_baseline_email"
-        app:startIconTint="@color/primaryColor">
+        app:startIconDrawable="@drawable/ic_baseline_email">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailTextField"
@@ -83,11 +84,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         app:layout_constraintEnd_toEndOf="@+id/email"
         app:layout_constraintStart_toStartOf="@+id/email"
         app:layout_constraintTop_toBottomOf="@+id/email"
-        app:startIconDrawable="@drawable/ic_baseline_lock"
-        app:startIconTint="@color/primaryColor">
+        app:startIconDrawable="@drawable/ic_baseline_lock">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordTextField"
@@ -101,8 +103,9 @@
         android:id="@+id/businessLoginButton"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:paddingVertical="12dp"
         android:text="@string/sign_in_to_business"
         android:textColor="@color/primaryTextColor"
         app:icon="@drawable/ic_baseline_business_center_24"
