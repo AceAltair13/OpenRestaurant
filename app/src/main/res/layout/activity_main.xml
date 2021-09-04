@@ -9,6 +9,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
         tools:context=".MainActivity">
 
         <ImageView
@@ -39,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="45dp"
             android:layout_marginEnd="32dp"
             android:layout_marginRight="32dp"
             android:paddingVertical="12dp"
@@ -68,8 +69,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
             app:layout_constraintEnd_toEndOf="@+id/customerLoginButton"
             app:layout_constraintStart_toStartOf="@+id/customerLoginButton"
             app:layout_constraintTop_toBottomOf="@+id/divider"
@@ -89,8 +88,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
             app:layout_constraintEnd_toEndOf="@+id/email"
             app:layout_constraintStart_toStartOf="@+id/email"
             app:layout_constraintTop_toBottomOf="@+id/email"
