@@ -1,20 +1,20 @@
 package com.example.openrestaurant
 
+import com.google.firebase.firestore.GeoPoint
+
 data class RestaurantDataGPS (
-    val id: String,
-    val name: String,
-    val latitude: Double,
-    val longitude: Double,
-    val menu: List<Menu>
+    var name: String? = "",
+    var location: GeoPoint? = null,
+    var menu: List<Menu>? = null
 )
 
 data class Menu (
-    val category: String,
-    val items: List<Item>
+    var category: String? = "",
+    var items: List<Item>? = null
 )
 
 data class Item (
-    val itemName: String,
-    val price: Long,
-    val image: String
+    var itemName: String? = "",
+    var itemPrice: Int? = 0,
+    var image: String? = ""
 )
