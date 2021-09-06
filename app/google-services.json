@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "393583626962",
+    "project_id": "openrestaurant-562cf",
+    "storage_bucket": "openrestaurant-562cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:393583626962:android:36e4c399b52c8ec4cbfb0b",
+        "android_client_info": {
+          "package_name": "com.example.openrestaurant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "393583626962-ar58m81h8ppfnsr0r65tar4ojd0fkrgn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaIkkHj9G3yVNN7QEyZWp2scvfiNOf57s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "393583626962-ar58m81h8ppfnsr0r65tar4ojd0fkrgn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
