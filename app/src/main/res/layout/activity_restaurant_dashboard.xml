@@ -1,110 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RestaurantDashboard">
-
-    <TextView
-        android:id="@+id/activityTitle"
-        android:layout_width="0dp"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:text="@string/welcome"
-        android:textColor="@color/primaryDarkColor"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:context=".RestaurantDashboard">
 
-    <TextView
-        android:id="@+id/restaurantName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/sarovar_restaurant"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/activityTitle"
-        app:layout_constraintStart_toStartOf="@+id/activityTitle"
-        app:layout_constraintTop_toBottomOf="@+id/activityTitle" />
+        <TextView
+            android:id="@+id/activityTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:text="@string/welcome"
+            android:textColor="@color/primaryDarkColor"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/viewOrder"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:gravity="center_vertical"
-        android:text="@string/view_orders"
-        app:icon="@drawable/ic_baseline_eye"
-        app:iconGravity="end"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/restaurantDashboardImage"
-        app:rippleColor="@color/primaryColor" />
+        <TextView
+            android:id="@+id/restaurantName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/sarovar_restaurant"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/activityTitle"
+            app:layout_constraintStart_toStartOf="@+id/activityTitle"
+            app:layout_constraintTop_toBottomOf="@+id/activityTitle" />
 
-    <Button
-        android:id="@+id/editMenu"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="20dp"
-        android:gravity="center_vertical"
-        android:text="@string/edit_restaurant_menu"
-        app:icon="@drawable/ic_baseline_restaurant"
-        app:iconGravity="end"
-        app:layout_constraintEnd_toEndOf="@+id/viewOrder"
-        app:layout_constraintStart_toStartOf="@+id/viewOrder"
-        app:layout_constraintTop_toBottomOf="@+id/viewOrder"
-        app:rippleColor="@color/primaryColor" />
+        <Button
+            android:id="@+id/viewOrder"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:gravity="center_vertical"
+            android:text="@string/view_orders"
+            app:icon="@drawable/ic_baseline_eye"
+            app:iconGravity="end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/restaurantDashboardImage"
+            app:rippleColor="@color/primaryColor" />
 
-    <Button
-        android:id="@+id/editRestaurant"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="20dp"
-        android:gravity="center_vertical"
-        android:text="@string/edit_restaurant_details"
-        app:icon="@drawable/ic_baseline_featured_play_list"
-        app:iconGravity="end"
-        app:layout_constraintEnd_toEndOf="@+id/editMenu"
-        app:layout_constraintStart_toStartOf="@+id/editMenu"
-        app:layout_constraintTop_toBottomOf="@+id/editMenu"
-        app:rippleColor="@color/primaryColor" />
+        <Button
+            android:id="@+id/editMenu"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:text="@string/edit_restaurant_menu"
+            app:icon="@drawable/ic_baseline_restaurant"
+            app:iconGravity="end"
+            app:layout_constraintEnd_toEndOf="@+id/viewOrder"
+            app:layout_constraintStart_toStartOf="@+id/viewOrder"
+            app:layout_constraintTop_toBottomOf="@+id/viewOrder"
+            app:rippleColor="@color/primaryColor" />
 
-    <Button
-        android:id="@+id/logoutButton"
-        style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="20dp"
-        android:gravity="center_vertical"
-        android:text="@string/logout"
-        android:textColor="@color/primaryTextColor"
-        app:icon="@drawable/ic_baseline_logout"
-        app:iconGravity="end"
-        app:iconTint="@color/primaryTextColor"
-        app:layout_constraintEnd_toEndOf="@+id/editRestaurant"
-        app:layout_constraintStart_toStartOf="@+id/editRestaurant"
-        app:layout_constraintTop_toBottomOf="@+id/editRestaurant"
-        app:rippleColor="@color/primaryColor" />
+        <Button
+            android:id="@+id/editRestaurant"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:text="@string/edit_restaurant_details"
+            app:icon="@drawable/ic_baseline_featured_play_list"
+            app:iconGravity="end"
+            app:layout_constraintEnd_toEndOf="@+id/editMenu"
+            app:layout_constraintStart_toStartOf="@+id/editMenu"
+            app:layout_constraintTop_toBottomOf="@+id/editMenu"
+            app:rippleColor="@color/primaryColor" />
 
-    <ImageView
-        android:id="@+id/restaurantDashboardImage"
-        android:layout_width="410dp"
-        android:layout_height="205dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/restaurantName"
-        app:srcCompat="@drawable/restaurant_dashboard" />
+        <Button
+            android:id="@+id/logoutButton"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:text="@string/logout"
+            android:textColor="@color/primaryTextColor"
+            app:icon="@drawable/ic_baseline_logout"
+            app:iconGravity="end"
+            app:iconTint="@color/primaryTextColor"
+            app:layout_constraintEnd_toEndOf="@+id/editRestaurant"
+            app:layout_constraintStart_toStartOf="@+id/editRestaurant"
+            app:layout_constraintTop_toBottomOf="@+id/editRestaurant"
+            app:rippleColor="@color/primaryColor" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/restaurantDashboardImage"
+            android:layout_width="410dp"
+            android:layout_height="205dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/restaurantName"
+            app:srcCompat="@drawable/restaurant_dashboard" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
