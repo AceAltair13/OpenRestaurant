@@ -26,7 +26,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Search for restaurants nearby..." />
+                android:hint="Search for restaurants nearby..."
+                android:maxLines="1"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <View
@@ -48,10 +49,12 @@
             android:text="Search Results:" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="16dp"
             app:layout_constraintTop_toBottomOf="@id/searchResults"
+            tools:layout_editor_absoluteX="16dp"
             tools:listitem="@layout/restaurant_data_gps_item" />
 
 
@@ -68,6 +71,16 @@
             app:srcCompat="@drawable/ic_baseline_search_24"
             app:tint="@android:color/white"
             tools:ignore="SpeakableTextPresentCheck" />
+
+        <ProgressBar
+            android:id="@+id/progressBarNearbyRestaurants"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchResults" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
