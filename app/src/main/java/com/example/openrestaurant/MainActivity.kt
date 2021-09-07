@@ -8,9 +8,6 @@ import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 
 class MainActivity : AppCompatActivity() {
-    private val userName = "tirth@email.com"
-    private val passWord = "pass1234"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -26,7 +23,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.businessLoginButton).setOnClickListener {
-            Toast.makeText(this, "Feature Coming Soon!", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "Feature Coming Soon!", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, QRCodeActivity::class.java))
         }
         findViewById<Button>(R.id.btnCreateBusiness).setOnClickListener {
             Toast.makeText(this, "Feature Coming Soon!", Toast.LENGTH_SHORT).show()

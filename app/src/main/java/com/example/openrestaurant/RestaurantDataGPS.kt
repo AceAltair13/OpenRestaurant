@@ -16,7 +16,7 @@ data class Menu(
 ) : Serializable
 
 data class Item(
-    var itemName: String? = "",
-    var itemPrice: Int? = 0,
+    var item_name: String? = "",
+    var item_price: Int? = 0,
     var image: String? = ""
 ) : Serializable
