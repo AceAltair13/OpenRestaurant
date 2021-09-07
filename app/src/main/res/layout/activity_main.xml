@@ -15,7 +15,7 @@
         <ImageView
             android:id="@+id/logoImage"
             android:layout_width="wrap_content"
-            android:layout_height="240dp"
+            android:layout_height="400dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/open_restaurant" />
@@ -57,67 +57,33 @@
             android:id="@+id/divider"
             android:layout_width="100dp"
             android:layout_height="1dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toTopOf="@+id/businessLoginButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/customerLoginButton" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/email"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="@+id/customerLoginButton"
-            app:layout_constraintStart_toStartOf="@+id/customerLoginButton"
-            app:layout_constraintTop_toBottomOf="@+id/divider"
-            app:startIconDrawable="@drawable/ic_baseline_email">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/emailTextField"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/email_hint"
-                android:inputType="textEmailAddress" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/password"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="@+id/email"
-            app:layout_constraintStart_toStartOf="@+id/email"
-            app:layout_constraintTop_toBottomOf="@+id/email"
-            app:startIconDrawable="@drawable/ic_baseline_lock">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/passwordTextField"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/password_hint"
-                android:inputType="textPassword" />
-        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/businessLoginButton"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:paddingVertical="12dp"
             android:text="@string/sign_in_to_business"
             android:textColor="@color/primaryTextColor"
             app:icon="@drawable/ic_baseline_business_center_24"
             app:iconGravity="textStart"
             app:iconTint="@color/primaryTextColor"
-            app:layout_constraintEnd_toEndOf="@+id/password"
-            app:layout_constraintStart_toStartOf="@+id/password"
-            app:layout_constraintTop_toBottomOf="@+id/password" />
+            app:layout_constraintBottom_toTopOf="@+id/btnCreateBusiness"
+            app:layout_constraintEnd_toEndOf="@+id/customerLoginButton"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/customerLoginButton"
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
 
         <Button
+            android:id="@+id/btnCreateBusiness"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

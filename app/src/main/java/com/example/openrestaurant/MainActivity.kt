@@ -20,29 +20,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(
                 Intent(
                     this,
-                    CustomerHome::class.java,
+                    CustomerHomeActivity::class.java,
                 )
             )
         }
 
         findViewById<Button>(R.id.businessLoginButton).setOnClickListener {
-            val user = findViewById<TextInputEditText>(R.id.emailTextField).text.toString()
-            val pass = findViewById<TextInputEditText>(R.id.passwordTextField).text.toString()
-
-            if (user == userName && pass == passWord) {
-                startActivity(
-                    Intent(
-                        this,
-                        RestaurantDashboard::class.java
-                    )
-                )
-            } else if (user.trim().isEmpty() || pass.trim().isEmpty()) {
-                Toast.makeText(this, "Username or Password cannot be empty!", Toast.LENGTH_SHORT)
-                    .show()
-            } else {
-                Toast.makeText(this, "Username or Password is Incorrect!", Toast.LENGTH_SHORT)
-                    .show()
-            }
+            Toast.makeText(this, "Feature Coming Soon!", Toast.LENGTH_SHORT).show()
+        }
+        findViewById<Button>(R.id.btnCreateBusiness).setOnClickListener {
+            Toast.makeText(this, "Feature Coming Soon!", Toast.LENGTH_SHORT).show()
         }
 
     }

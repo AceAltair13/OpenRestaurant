@@ -8,7 +8,9 @@
     app:cardCornerRadius="12dp"
     app:cardElevation="3dp"
     app:contentPadding="4dp"
-    android:layout_margin="4dp">
+    android:layout_margin="4dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,6 +18,16 @@
         android:id="@+id/constraintLayoutRestaurantGPSItem"
         android:padding="16dp"
         >
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/restaurantDataGPSItemDistance"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/restaurantDataGPSItemTitle"
+            app:srcCompat="@drawable/ic_baseline_location" />
 
         <TextView
             android:id="@+id/restaurantDataGPSItemTitle"
@@ -32,10 +44,10 @@
             android:id="@+id/restaurantDataGPSItemDistance"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/restaurantDataGPSItemTitle"
-            app:layout_constraintStart_toStartOf="@id/restaurantDataGPSItemTitle"
-            app:layout_constraintEnd_toEndOf="@id/restaurantDataGPSItemTitle"
-            android:text="About 50m away"/>
+            android:text="About 50m away"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/restaurantDataGPSItemTitle" />
 
         <ImageView
             android:id="@+id/restaurantDataGPSItemImage"
@@ -45,7 +57,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/restaurantDataGPSItemTitle"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_chevron_right" />
+            app:srcCompat="@drawable/ic_baseline_restaurant" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardElevation="3dp"
+    app:contentPadding="4dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutRestaurantGPSItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/restaurantCategoryTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Breakfast"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/restaurantCategoryImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/restaurantCategoryItemCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="12 Items"
+            app:layout_constraintTop_toBottomOf="@id/restaurantCategoryTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/restaurantCategoryImage"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <ImageView
+            android:id="@+id/restaurantCategoryImage"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_chevron_right" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

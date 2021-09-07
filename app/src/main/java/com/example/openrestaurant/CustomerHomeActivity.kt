@@ -2,20 +2,20 @@ package com.example.openrestaurant
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import com.example.openrestaurant.Fragments.AboutFragment
 import com.example.openrestaurant.Fragments.FavouritesFragment
 import com.example.openrestaurant.Fragments.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class CustomerHome : AppCompatActivity() {
+class CustomerHomeActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_customer_home)
-
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.setDisplayShowHomeEnabled(true)
         val searchFragment = SearchFragment()
         val favouritesFragment = FavouritesFragment()
         val aboutFragment = AboutFragment()

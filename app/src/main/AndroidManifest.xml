@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,13 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OpenRestaurant">
         <activity
-            android:name=".CustomerHome"
+            android:name=".RestaurantMenuActivity"
+            android:parentActivityName=".CustomerHomeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CustomerHomeActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="true" />
         <activity
             android:name=".ConfirmOrder"
             android:exported="true" />
         <activity
-            android:name=".RestaurantDashboard"
+            android:name=".RestaurantDashboardActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
