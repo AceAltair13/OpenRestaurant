@@ -1,6 +1,7 @@
 package com.example.openrestaurant.Fragments
 
 import android.content.Intent
+import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -38,8 +39,23 @@ class SearchFragment : Fragment(), RestaurantDataGPSItemClicked {
                 view.findViewById<ProgressBar>(R.id.progressBarNearbyRestaurants).visibility =
                     View.GONE
                 for (document in result) {
-                    restaurantData.add(document.toObject(RestaurantDataGPS::class.java))
+                    var currDoc = document.toObject(RestaurantDataGPS::class.java)
+                    var results = FloatArray(1)
+
+                    // TODO: Add actual location referencing
+                    currDoc.location?.latitude?.let {
+                        currDoc.location?.longitude?.let { it1 ->
+                            Location.distanceBetween(
+                                it,
+                                it1, 19.20505823884238, 72.85147471308453, results
+                            )
+                        }
+                    }
+                    currDoc.distance = results[0].toInt()
+
+                    restaurantData.add(currDoc)
                 }
+                restaurantData.sortBy { it.distance }
                 mAdapter.updateRestaurantDataGPS(restaurantData)
             }
             .addOnFailureListener { exception ->

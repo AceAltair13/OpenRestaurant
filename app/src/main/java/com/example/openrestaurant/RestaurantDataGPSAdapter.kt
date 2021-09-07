@@ -39,13 +39,16 @@ class RestaurantDataGPSAdapter(private val listener: RestaurantDataGPSItemClicke
                 )
             }
         }
+        currentItem.distance = results[0].toInt()
         Log.d("Location Data", "${results[0]}")
-        holder.distance.text = "About ${results[0].toInt()}m away"
+        holder.distance.text = "About ${currentItem.distance}m away"
     }
 
     fun updateRestaurantDataGPS(updatedRestaurantDataGPS: ArrayList<RestaurantDataGPS>) {
         items.clear()
+
         items.addAll(updatedRestaurantDataGPS)
+
         notifyDataSetChanged()
     }
 
