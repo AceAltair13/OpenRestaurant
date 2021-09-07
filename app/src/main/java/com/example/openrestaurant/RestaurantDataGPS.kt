@@ -6,7 +6,7 @@ import java.io.Serializable
 data class RestaurantDataGPS(
     var name: String? = "",
     var location: GeoPoint? = null,
-    var menu: ArrayList<Menu>? = null
+    var menu: ArrayList<Menu>? = null,
     var distance: Int? = 0
 )
 
