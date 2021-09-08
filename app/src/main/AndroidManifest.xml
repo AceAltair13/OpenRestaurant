@@ -15,21 +15,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OpenRestaurant">
         <activity
-            android:name=".QRCodeActivity"
+            android:name=".activity.QRCodeActivity"
             android:exported="true" />
         <activity
-            android:name=".RestaurantMenuActivity"
+            android:name=".activity.RestaurantMenuActivity"
             android:exported="true"
-            android:parentActivityName=".CustomerHomeActivity" />
+            android:parentActivityName=".activity.CustomerHomeActivity" />
         <activity
-            android:name=".CustomerHomeActivity"
+            android:name=".activity.CustomerHomeActivity"
             android:exported="true"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".ConfirmOrder"
+            android:name=".activity.ConfirmOrderActivity"
             android:exported="true" />
         <activity
-            android:name=".RestaurantDashboardActivity"
+            android:name=".activity.RestaurantDashboardActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
