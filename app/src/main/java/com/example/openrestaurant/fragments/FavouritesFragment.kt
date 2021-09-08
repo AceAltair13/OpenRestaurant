@@ -1,4 +1,4 @@
-package com.example.openrestaurant.Fragments
+package com.example.openrestaurant.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

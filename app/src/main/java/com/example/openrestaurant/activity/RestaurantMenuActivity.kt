@@ -1,11 +1,14 @@
-package com.example.openrestaurant
+package com.example.openrestaurant.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.openrestaurant.Menu as RestaurantMenu
+import com.example.openrestaurant.R
+import com.example.openrestaurant.adapter.RestaurantCategoryItemClicked
+import com.example.openrestaurant.adapter.RestaurantMenuAdapter
+import com.example.openrestaurant.model.Menu as RestaurantMenu
 
 class RestaurantMenuActivity : AppCompatActivity(), RestaurantCategoryItemClicked {
     private lateinit var restaurantMenu: ArrayList<RestaurantMenu>

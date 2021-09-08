@@ -1,11 +1,12 @@
-package com.example.openrestaurant
+package com.example.openrestaurant.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.example.openrestaurant.Fragments.AboutFragment
-import com.example.openrestaurant.Fragments.FavouritesFragment
-import com.example.openrestaurant.Fragments.SearchFragment
+import com.example.openrestaurant.R
+import com.example.openrestaurant.fragments.AboutFragment
+import com.example.openrestaurant.fragments.FavouritesFragment
+import com.example.openrestaurant.fragments.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class CustomerHomeActivity : AppCompatActivity() {

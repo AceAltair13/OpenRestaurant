@@ -1,4 +1,4 @@
-package com.example.openrestaurant.Fragments
+package com.example.openrestaurant.fragments
 
 import android.content.Intent
 import android.location.Location
@@ -13,6 +13,10 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.openrestaurant.*
+import com.example.openrestaurant.activity.RestaurantMenuActivity
+import com.example.openrestaurant.adapter.RestaurantDataGPSAdapter
+import com.example.openrestaurant.adapter.RestaurantDataGPSItemClicked
+import com.example.openrestaurant.model.RestaurantDataGPS
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.io.Serializable

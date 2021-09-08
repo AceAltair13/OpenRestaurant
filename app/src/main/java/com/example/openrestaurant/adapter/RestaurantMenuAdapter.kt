@@ -1,4 +1,4 @@
-package com.example.openrestaurant
+package com.example.openrestaurant.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.openrestaurant.R
+import com.example.openrestaurant.model.Menu
 
 class RestaurantMenuAdapter(private val listener: RestaurantCategoryItemClicked): RecyclerView.Adapter<RestaurantMenuHolder>() {
     private val items: ArrayList<Menu> = ArrayList()

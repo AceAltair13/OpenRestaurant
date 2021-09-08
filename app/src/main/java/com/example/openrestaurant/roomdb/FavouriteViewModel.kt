@@ -33,12 +33,15 @@
 //}
 
 
-package com.example.openrestaurant
+package com.example.openrestaurant.roomdb
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.openrestaurant.roomdb.Favourite
+import com.example.openrestaurant.roomdb.OpenRestaurantDatabase
+import com.example.openrestaurant.roomdb.OpenRestaurantRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -56,7 +59,7 @@ class FavouriteViewModel(application: Application): AndroidViewModel(application
     fun deleteFavourite(favourite: Favourite) = viewModelScope.launch(Dispatchers.IO) {
         repository.deleteFavourite(favourite)
     }
-    fun insertFavourite(favourite:Favourite) = viewModelScope.launch(Dispatchers.IO) {
+    fun insertFavourite(favourite: Favourite) = viewModelScope.launch(Dispatchers.IO) {
         repository.insertFavourite(favourite)
     }
 

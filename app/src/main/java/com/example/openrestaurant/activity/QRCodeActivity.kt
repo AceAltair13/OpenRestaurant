@@ -1,4 +1,4 @@
-package com.example.openrestaurant
+package com.example.openrestaurant.activity
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -13,6 +13,7 @@ import com.budiyev.android.codescanner.CodeScannerView
 import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
+import com.example.openrestaurant.R
 
 class QRCodeActivity : AppCompatActivity() {
     private lateinit var codeScanner: CodeScanner
