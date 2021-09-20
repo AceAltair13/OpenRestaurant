@@ -25,7 +25,7 @@ class RestaurantMenuAdapter(private val listener: RestaurantCategoryItemClicked)
     override fun onBindViewHolder(holder: RestaurantMenuHolder, position: Int) {
         val currentItem = items[position]
         holder.categoryName.text = currentItem.category
-        holder.categoryCount.text = "${currentItem.items?.size} items"
+        holder.categoryCount.text = "10 items"
     }
 
     fun updateRestaurantMenu(restaurantMenu: ArrayList<Menu>) {

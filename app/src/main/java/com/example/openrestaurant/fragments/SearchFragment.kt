@@ -19,7 +19,7 @@ import com.example.openrestaurant.adapter.RestaurantDataGPSItemClicked
 import com.example.openrestaurant.model.RestaurantDataGPS
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.io.Serializable
+import io.paperdb.Paper
 
 class SearchFragment : Fragment(), RestaurantDataGPSItemClicked {
 
@@ -36,6 +36,8 @@ class SearchFragment : Fragment(), RestaurantDataGPSItemClicked {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var restaurantData = ArrayList<RestaurantDataGPS>()
+        val latitude = Paper.book().read<Double>("LATITUDE")
+        val longitude = Paper.book().read<Double>("LONGITUDE")
 
         db.collection("restaurants")
             .get()
@@ -45,18 +47,19 @@ class SearchFragment : Fragment(), RestaurantDataGPSItemClicked {
                 for (document in result) {
                     var currDoc = document.toObject(RestaurantDataGPS::class.java)
                     var results = FloatArray(1)
-
                     // TODO: Add actual location referencing
                     currDoc.location?.latitude?.let {
                         currDoc.location?.longitude?.let { it1 ->
                             Location.distanceBetween(
                                 it,
-                                it1, 19.20505823884238, 72.85147471308453, results
+                                it1, latitude, longitude, results
                             )
                         }
                     }
+                    Log.d("Curr Lat", "$latitude")
+                    Log.d("Curr Long", "$longitude")
                     currDoc.distance = results[0].toInt()
-
+                    currDoc.id = document.id
                     restaurantData.add(currDoc)
                 }
                 restaurantData.sortBy { it.distance }
@@ -78,13 +81,14 @@ class SearchFragment : Fragment(), RestaurantDataGPSItemClicked {
     }
 
     override fun onClicked(item: RestaurantDataGPS) {
-//        Toast.makeText(context, "Restaurant Name: ${item.name}", Toast.LENGTH_SHORT).show()
         val intent = Intent(
             context,
             RestaurantMenuActivity::class.java
         )
-        intent.putExtra("RESTAURANT_MENU", item.menu as Serializable)
-        intent.putExtra("RESTAURANT_NAME", item.name)
+//        intent.putExtra("RESTAURANT_NAME", item.name)
+//        intent.putExtra("RESTAURANT_ID", item.id)
+        Paper.book().write("RESTAURANT_NAME", item.name)
+        Paper.book().write("RESTAURANT_ID", item.id)
         startActivity(intent)
     }
 
