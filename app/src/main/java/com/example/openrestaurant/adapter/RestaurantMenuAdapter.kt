@@ -25,7 +25,6 @@ class RestaurantMenuAdapter(private val listener: RestaurantCategoryItemClicked)
     override fun onBindViewHolder(holder: RestaurantMenuHolder, position: Int) {
         val currentItem = items[position]
         holder.categoryName.text = currentItem.category
-        holder.categoryCount.text = "10 items"
     }
 
     fun updateRestaurantMenu(restaurantMenu: ArrayList<Menu>) {
@@ -41,7 +40,6 @@ class RestaurantMenuAdapter(private val listener: RestaurantCategoryItemClicked)
 
 class RestaurantMenuHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val categoryName: TextView = itemView.findViewById(R.id.restaurantCategoryTitle)
-    val categoryCount: TextView = itemView.findViewById(R.id.restaurantCategoryItemCount)
 }
 
 interface RestaurantCategoryItemClicked {

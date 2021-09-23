@@ -15,9 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OpenRestaurant">
         <activity
-            android:name=".activity.RestaurantMenuItemsActivity"
-            android:parentActivityName=".activity.RestaurantMenuActivity"
+            android:name=".activity.FinalOrderPlacedActivity"
             android:exported="true" />
+        <activity
+            android:name=".activity.RestaurantMenuItemsActivity"
+            android:exported="true"
+            android:parentActivityName=".activity.RestaurantMenuActivity" />
         <activity
             android:name=".activity.QRCodeActivity"
             android:exported="true" />
@@ -31,7 +34,8 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".activity.ConfirmOrderActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".activity.RestaurantMenuItemsActivity" />
         <activity
             android:name=".activity.RestaurantDashboardActivity"
             android:exported="true" />

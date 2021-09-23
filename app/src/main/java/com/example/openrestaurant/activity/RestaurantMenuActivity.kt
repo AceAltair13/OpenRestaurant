@@ -4,7 +4,9 @@ import android.content.Intent
 import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.openrestaurant.R
 import com.example.openrestaurant.adapter.RestaurantCategoryItemClicked
 import com.example.openrestaurant.adapter.RestaurantMenuAdapter
+import com.example.openrestaurant.paperdb.OrderCart
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import io.paperdb.Paper
@@ -28,8 +31,6 @@ class RestaurantMenuActivity : AppCompatActivity(), RestaurantCategoryItemClicke
         Paper.init(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant_menu)
-//        restaurantName = intent.extras?.get("RESTAURANT_NAME").toString()
-//        restaurantId = intent.extras?.get("RESTAURANT_ID").toString()
         restaurantName = Paper.book().read("RESTAURANT_NAME")
         restaurantId = Paper.book().read("RESTAURANT_ID")
         title = restaurantName
@@ -37,14 +38,9 @@ class RestaurantMenuActivity : AppCompatActivity(), RestaurantCategoryItemClicke
         recyclerView = findViewById(R.id.recyclerView2)
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setDisplayShowHomeEnabled(true)
-        var categoryData = ArrayList<RestaurantMenu>()
+        findViewById<Button>(R.id.btnMenuProceed).isEnabled = OrderCart.getOrderCartSize() != 0
 
-//        if (savedInstanceState != null) {
-//            restaurantId = savedInstanceState.getString("RESTAURANT_ID").toString()
-//            restaurantName = savedInstanceState.getString("RESTAURANT_NAME").toString()
-//        } else {
-//            Toast.makeText(this, "There was an error getting savedInstance", Toast.LENGTH_LONG).show()
-//        }
+        var categoryData = ArrayList<RestaurantMenu>()
 
         db.collection("restaurants")
             .document(restaurantId).collection("menu")
@@ -69,19 +65,33 @@ class RestaurantMenuActivity : AppCompatActivity(), RestaurantCategoryItemClicke
             menuAdapter = RestaurantMenuAdapter(this@RestaurantMenuActivity)
             adapter = menuAdapter
         }
-    }
 
-//    override fun onSaveInstanceState(outState: Bundle) {
-//        super.onSaveInstanceState(outState)
-//        outState.putString("RESTAURANT_NAME", restaurantName)
-//        outState.putString("RESTAURANT_ID", restaurantId)
-//    }
+        findViewById<Button>(R.id.btnMenuProceed).setOnClickListener {
+            val intent = Intent(this, ConfirmOrderActivity::class.java)
+            startActivity(intent)
+
+
+//            val cartItem = OrderCart.getCart()[0]
+//            val docPath = cartItem.itemPath
+//
+//            db.collection("restaurants")
+//                .document(docPath)
+//                .get()
+//                .addOnSuccessListener { result ->
+//                    Log.d("Fetched Item", "${result.data}")
+//                }
+//                .addOnFailureListener {
+//                    Log.e("Error", "Error fetching document")
+//                }
+
+        }
+
+    }
 
     override fun onClicked(item: RestaurantMenu) {
         val intent = Intent(this, RestaurantMenuItemsActivity::class.java)
-//        intent.putExtra("RESTAURANT_ID", restaurantId)
-//        intent.putExtra("CATEGORY_ID", item.id)
         Paper.book().write("MENU_ID", item.id)
+        Paper.book().write("MENU_NAME", item.category)
         startActivity(intent)
     }
 }

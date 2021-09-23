@@ -1,21 +1,22 @@
 package com.example.openrestaurant.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.openrestaurant.R
 import com.example.openrestaurant.adapter.RestaurantItemAdapter
-import com.example.openrestaurant.adapter.RestaurantItemClicked
 import com.example.openrestaurant.model.Item
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import io.paperdb.Paper
 
-class RestaurantMenuItemsActivity : AppCompatActivity(), RestaurantItemClicked {
+class RestaurantMenuItemsActivity : AppCompatActivity() {
     private lateinit var itemAdapter: RestaurantItemAdapter
     private lateinit var categoryId: String
     private lateinit var restaurantId: String
@@ -27,11 +28,10 @@ class RestaurantMenuItemsActivity : AppCompatActivity(), RestaurantItemClicked {
         Paper.init(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant_menu_items)
-        title = "Category Items"
+        title = Paper.book().read("MENU_NAME")
+        supportActionBar?.subtitle = "Category Items"
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setDisplayShowHomeEnabled(true)
-//        categoryId = intent.extras?.getString("CATEGORY_ID").toString()
-//        restaurantId = intent.extras?.getString("RESTAURANT_ID").toString()
         categoryId = Paper.book().read("MENU_ID")
         restaurantId = Paper.book().read("RESTAURANT_ID")
         recyclerView = findViewById(R.id.recyclerView3)
@@ -58,12 +58,8 @@ class RestaurantMenuItemsActivity : AppCompatActivity(), RestaurantItemClicked {
 
         recyclerView.apply {
             layoutManager = LinearLayoutManager(this@RestaurantMenuItemsActivity)
-            itemAdapter = RestaurantItemAdapter(this@RestaurantMenuItemsActivity)
+            itemAdapter = RestaurantItemAdapter()
             adapter = itemAdapter
         }
-    }
-
-    override fun onClicked(item: Item) {
-        Toast.makeText(this, item.item_name, Toast.LENGTH_SHORT).show()
     }
 }
