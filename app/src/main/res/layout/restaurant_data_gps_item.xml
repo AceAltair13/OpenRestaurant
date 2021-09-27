@@ -5,19 +5,18 @@
     android:id="@+id/restaurantDataGPSItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="3dp"
-    app:contentPadding="4dp"
     android:layout_margin="4dp"
     android:clickable="true"
-    android:foreground="?android:attr/selectableItemBackground">
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="3dp"
+    app:contentPadding="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutRestaurantGPSItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/constraintLayoutRestaurantGPSItem"
-        android:padding="16dp"
-        >
+        android:padding="16dp">
 
         <ImageView
             android:id="@+id/imageView"
@@ -34,11 +33,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Sarovar Restaurant"
-            android:textSize="20sp"
             android:textColor="@android:color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@id/restaurantDataGPSItemImage"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/restaurantDataGPSItemImage"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/restaurantDataGPSItemDistance"

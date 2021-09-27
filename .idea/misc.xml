@@ -9,23 +9,47 @@
         <entry key="..\:/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable-v24/ic_baseline_restaurant.xml" value="0.14444444444444443" />
         <entry key="..\:/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.14444444444444443" />
         <entry key="..\:/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.14444444444444443" />
+        <entry key="..\:/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/fragment_about.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/fragment_favourites.xml" value="0.13043478260869565" />
         <entry key="..\:/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/fragment_search.xml" value="0.33" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable-v24/ic_baseline_business_center_24.xml" value="0.262037037037037" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable-v24/ic_baseline_check.xml" value="0.262037037037037" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable-v24/ic_baseline_email.xml" value="0.262037037037037" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable-v24/ic_baseline_eye.xml" value="0.262037037037037" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable-v24/ic_baseline_featured_play_list.xml" value="0.262037037037037" />
         <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable-v24/ic_baseline_lock.xml" value="0.2890625" />
         <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable-v24/ic_baseline_logout.xml" value="0.2890625" />
         <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable-v24/ic_baseline_person_24.xml" value="0.1" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable-v24/ic_baseline_restaurant.xml" value="0.262037037037037" />
         <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2890625" />
-        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/activity_confirm_order.xml" value="0.25" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.2722222222222222" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable/ic_baseline_add_circle_outline_24.xml" value="0.26944444444444443" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable/ic_baseline_chevron_right.xml" value="0.262037037037037" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.262037037037037" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.262037037037037" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable/ic_baseline_location.xml" value="0.262037037037037" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable/ic_baseline_refresh.xml" value="0.262037037037037" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable/ic_baseline_remove_circle_outline_24.xml" value="0.26944444444444443" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.262037037037037" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/activity_add_item_to_cart.xml" value="0.2653985507246377" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/activity_confirm_order.xml" value="0.33" />
         <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/activity_customer_home.xml" value="0.25" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/activity_final_order_placed.xml" value="0.2563405797101449" />
         <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/activity_qrcode.xml" value="0.25" />
         <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/activity_restaurant_dashboard.xml" value="0.25" />
         <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/activity_restaurant_menu.xml" value="0.25" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/activity_restaurant_menu_item.xml" value="0.27291666666666664" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/activity_restaurant_menu_items.xml" value="0.2504528985507246" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/activity_view_selected.xml" value="0.2563405797101449" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/cart_item.xml" value="0.2563405797101449" />
         <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/fragment_about.xml" value="0.27291666666666664" />
         <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/fragment_favourites.xml" value="0.27291666666666664" />
         <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/fragment_search.xml" value="0.25" />
         <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/restaurant_data_gps_item.xml" value="0.25" />
-        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/restaurant_menu_category_item.xml" value="0.1" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/restaurant_final_order_item.xml" value="0.2563405797101449" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/restaurant_menu_category_item.xml" value="0.25" />
+        <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/layout/restaurant_menu_items_item.xml" value="0.27291666666666664" />
         <entry key="..\:/Programming/AndroidStudioProjects/OpenRestaurant/app/src/main/res/menu/nav_menu.xml" value="0.1" />
       </map>
     </option>

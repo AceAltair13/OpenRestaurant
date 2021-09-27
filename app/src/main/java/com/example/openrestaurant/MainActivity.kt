@@ -17,14 +17,17 @@ import androidx.core.content.ContextCompat
 import com.example.openrestaurant.activity.CustomerHomeActivity
 import com.example.openrestaurant.activity.QRCodeActivity
 import com.google.android.gms.location.*
+import io.paperdb.Paper
 
 class MainActivity : AppCompatActivity() {
+
     private val TAG="Main_ACTIVITY"
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         this.supportActionBar!!.hide()
+        Paper.init(this)
 
         findViewById<Button>(R.id.customerLoginButton).setOnClickListener {
             startActivity(
@@ -69,6 +72,11 @@ class MainActivity : AppCompatActivity() {
                 override fun onLocationResult(locationResult: LocationResult) {
                     val location: Location? = locationResult.lastLocation
                     if (location != null) {
+
+                        Paper.book().write("LATITUDE", location.latitude.toDouble());
+                        Paper.book().write("LONGITUDE", location.longitude.toDouble());
+
+
                         Log.d("longitude ", location.longitude.toString())
                         Log.d("latitude", location.latitude.toString())
                         Log.d("speed", location.speed.toString())

@@ -8,11 +8,14 @@ import com.example.openrestaurant.fragments.AboutFragment
 import com.example.openrestaurant.fragments.FavouritesFragment
 import com.example.openrestaurant.fragments.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import io.paperdb.Paper
 
 class CustomerHomeActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Paper.init(this)
+        Paper.book().delete("cart")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_customer_home)
         actionBar?.setDisplayHomeAsUpEnabled(true)
