@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.openrestaurant.R
 import com.example.openrestaurant.model.RestaurantDataGPS
+import io.paperdb.Paper
 
 
 class RestaurantDataGPSAdapter(private val listener: RestaurantDataGPSItemClicked) :
@@ -31,13 +32,14 @@ class RestaurantDataGPSAdapter(private val listener: RestaurantDataGPSItemClicke
         val currentItem = items[position]
         holder.titleView.text = currentItem.name
         val results = FloatArray(1)
+        val myLatitude = Paper.book().read<Double>("LATITUDE")
+        val myLongitude = Paper.book().read<Double>("LONGITUDE")
 
-        // TODO: Add actual location referencing
         currentItem.location?.latitude?.let {
             currentItem.location?.longitude?.let { it1 ->
                 Location.distanceBetween(
                     it,
-                    it1, 19.20505823884238, 72.85147471308453, results
+                    it1, myLatitude, myLongitude, results
                 )
             }
         }
@@ -48,9 +50,7 @@ class RestaurantDataGPSAdapter(private val listener: RestaurantDataGPSItemClicke
 
     fun updateRestaurantDataGPS(updatedRestaurantDataGPS: ArrayList<RestaurantDataGPS>) {
         items.clear()
-
         items.addAll(updatedRestaurantDataGPS)
-
         notifyDataSetChanged()
     }
 
@@ -61,8 +61,8 @@ class RestaurantDataGPSAdapter(private val listener: RestaurantDataGPSItemClicke
 }
 
 class RestaurantDataGPSHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val titleView: TextView = itemView.findViewById<TextView>(R.id.restaurantDataGPSItemTitle)
-    val distance: TextView = itemView.findViewById<TextView>(R.id.restaurantDataGPSItemDistance)
+    val titleView: TextView = itemView.findViewById(R.id.restaurantDataGPSItemTitle)
+    val distance: TextView = itemView.findViewById(R.id.restaurantDataGPSItemDistance)
 }
 
 interface RestaurantDataGPSItemClicked {

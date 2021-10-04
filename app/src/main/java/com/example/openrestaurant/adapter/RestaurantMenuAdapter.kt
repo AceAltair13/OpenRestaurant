@@ -39,7 +39,7 @@ class RestaurantMenuAdapter(private val listener: RestaurantCategoryItemClicked)
 }
 
 class RestaurantMenuHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val categoryName: TextView = itemView.findViewById(R.id.restaurantCategoryTitle)
+    val categoryName: TextView = itemView.findViewById(R.id.favouriteItemOrderName)
 }
 
 interface RestaurantCategoryItemClicked {

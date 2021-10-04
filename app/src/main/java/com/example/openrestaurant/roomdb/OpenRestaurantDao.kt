@@ -13,6 +13,6 @@ interface OpenRestaurantDao {
     @Delete
     suspend fun deleteFavourite(favourite: Favourite)
 
-    @Query("Select * from favourite order by timestamp DESC")
+    @Query("SELECT * FROM favourite")
     fun getAllFavourite(): LiveData<List<Favourite>>
 }

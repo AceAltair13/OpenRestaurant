@@ -24,11 +24,11 @@ class CustomerHomeActivity : AppCompatActivity() {
         val favouritesFragment = FavouritesFragment()
         val aboutFragment = AboutFragment()
 
-        makeCurrentFragment(searchFragment, "Search")
+        makeCurrentFragment(searchFragment, "Restaurants")
 
         findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.searchNavButton -> makeCurrentFragment(searchFragment, "Search")
+                R.id.searchNavButton -> makeCurrentFragment(searchFragment, "Restaurants")
                 R.id.favoriteNavButton -> makeCurrentFragment(favouritesFragment, "Favourites")
                 R.id.infoNavButton -> makeCurrentFragment(aboutFragment, "About Us")
             }
