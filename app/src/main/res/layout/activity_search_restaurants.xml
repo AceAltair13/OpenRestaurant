@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f5f5f5"
     tools:context=".activity.SearchRestaurantsActivity">
 
     <View
@@ -16,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/favouriteActivityTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -54,7 +55,7 @@
         app:srcCompat="@drawable/ic_wave6" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView5"
+        android:id="@+id/favouriteRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:paddingStart="20dp"
@@ -66,12 +67,12 @@
         tools:listitem="@layout/restaurant_data_gps_item" />
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/favouriteProgressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/recyclerView5"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerView5"
-        app:layout_constraintStart_toStartOf="@+id/recyclerView5"
+        app:layout_constraintBottom_toBottomOf="@+id/favouriteRecyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/favouriteRecyclerView"
+        app:layout_constraintStart_toStartOf="@+id/favouriteRecyclerView"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
