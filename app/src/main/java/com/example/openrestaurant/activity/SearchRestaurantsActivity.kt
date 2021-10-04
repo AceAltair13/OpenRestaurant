@@ -1,32 +1,31 @@
 package com.example.openrestaurant.activity
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.location.Geocoder
 import android.location.Location
-import androidx.appcompat.app.AppCompatActivity
+import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
-import com.example.openrestaurant.R
-import com.google.android.gms.location.*
-import android.location.Geocoder
-import android.location.LocationManager
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.openrestaurant.R
 import com.example.openrestaurant.adapter.RestaurantDataGPSAdapter
 import com.example.openrestaurant.adapter.RestaurantDataGPSItemClicked
 import com.example.openrestaurant.model.RestaurantDataGPS
-import com.example.openrestaurant.services.GPSUtility
+import com.google.android.gms.location.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.vmadalin.easypermissions.EasyPermissions
 import com.vmadalin.easypermissions.dialogs.SettingsDialog
+import io.nlopez.smartlocation.SmartLocation
 import io.paperdb.Paper
 import java.util.*
 import kotlin.collections.ArrayList
@@ -39,7 +38,6 @@ class SearchRestaurantsActivity : AppCompatActivity(), RestaurantDataGPSItemClic
         const val PERMISSION_LOCATION_REQUEST_CODE = 1
     }
 
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var mAdapter: RestaurantDataGPSAdapter
     private val db = Firebase.firestore
 
@@ -52,7 +50,6 @@ class SearchRestaurantsActivity : AppCompatActivity(), RestaurantDataGPSItemClic
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setDisplayShowHomeEnabled(true)
         title = ""
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         getRestaurantsFromGPS()
 
         findViewById<FloatingActionButton>(R.id.btnSearchRefresh).setOnClickListener {
@@ -60,7 +57,6 @@ class SearchRestaurantsActivity : AppCompatActivity(), RestaurantDataGPSItemClic
         }
     }
 
-    @SuppressLint("MissingPermission")
     private fun getRestaurantsFromGPS() {
         findViewById<ProgressBar>(R.id.searchProgressBar).visibility =
             View.VISIBLE
@@ -71,67 +67,69 @@ class SearchRestaurantsActivity : AppCompatActivity(), RestaurantDataGPSItemClic
                     View.GONE
                 findViewById<RecyclerView>(R.id.searchRecyclerView).visibility = View.GONE
                 findViewById<TextView>(R.id.searchGpsOffErrorMsg).visibility = View.VISIBLE
+                findViewById<TextView>(R.id.searchCityName).text = "Location Disabled"
             } else {
                 findViewById<TextView>(R.id.searchGpsOffErrorMsg).visibility = View.GONE
-                fusedLocationClient.getCurrentLocation(LocationRequest.PRIORITY_HIGH_ACCURACY, null)
-                    .addOnSuccessListener {
-                        Log.d("GPS Message", "getRestaurantsFromGPS: $it")
-                        val geoCoder = Geocoder(this)
-                        val currentLocation =
-                            geoCoder.getFromLocation(it.latitude, it.longitude, 1)
-                        val myLat = currentLocation.first().latitude
-                        val myLong = currentLocation.first().longitude
-                        findViewById<TextView>(R.id.searchCityName).text =
-                            currentLocation.first().locality
+                SmartLocation.with(this).location().oneFix().start { location ->
+                    Log.d("GPS Message", "getRestaurantsFromGPS: $location")
+                    val geoCoder = Geocoder(this)
+                    val currentLocation =
+                        geoCoder.getFromLocation(location.latitude, location.longitude, 1)
+                    val myLat = currentLocation.first().latitude
+                    val myLong = currentLocation.first().longitude
+                    findViewById<TextView>(R.id.searchCityName).text =
+                        currentLocation.first().locality
 
-                        // Firebase Retrieval
-                        var restaurantData = ArrayList<RestaurantDataGPS>()
-                        db.collection("restaurants")
-                            .get()
-                            .addOnSuccessListener { result ->
-                                findViewById<ProgressBar>(R.id.searchProgressBar).visibility =
-                                    View.GONE
-                                for (document in result) {
-                                    var currDoc =
-                                        document.toObject(RestaurantDataGPS::class.java)
-                                    var results = FloatArray(1)
-                                    currDoc.location?.latitude?.let {
-                                        currDoc.location?.longitude?.let { it1 ->
-                                            Location.distanceBetween(
-                                                it,
-                                                it1, myLat, myLong, results
-                                            )
-                                        }
+                    // Firebase Retrieval
+                    val restaurantData = ArrayList<RestaurantDataGPS>()
+                    db.collection("restaurants")
+                        .get()
+                        .addOnSuccessListener { result ->
+                            findViewById<ProgressBar>(R.id.searchProgressBar).visibility =
+                                View.GONE
+                            findViewById<RecyclerView>(R.id.searchRecyclerView).visibility =
+                                View.VISIBLE
+                            for (document in result) {
+                                val currDoc =
+                                    document.toObject(RestaurantDataGPS::class.java)
+                                val results = FloatArray(1)
+                                currDoc.location?.latitude?.let {
+                                    currDoc.location?.longitude?.let { it1 ->
+                                        Location.distanceBetween(
+                                            it,
+                                            it1, myLat, myLong, results
+                                        )
                                     }
-                                    Log.d("Curr Lat", "$myLat")
-                                    Log.d("Curr Long", "$myLong")
-                                    currDoc.distance = results[0].toInt()
-                                    currDoc.id = document.id
-                                    restaurantData.add(currDoc)
                                 }
-                                restaurantData.sortBy { it.distance }
-                                mAdapter.updateRestaurantDataGPS(restaurantData)
+                                Log.d("Curr Lat", "$myLat")
+                                Log.d("Curr Long", "$myLong")
+                                currDoc.distance = results[0].toInt()
+                                currDoc.id = document.id
+                                restaurantData.add(currDoc)
                             }
-                            .addOnFailureListener { exception ->
-                                findViewById<ProgressBar>(R.id.searchProgressBar).visibility =
-                                    View.GONE
-                                Log.w("Firebase Warning", "Error getting documents. $exception")
-                                Toast.makeText(this@SearchRestaurantsActivity,
-                                    "Error retrieving data!",
-                                    Toast.LENGTH_SHORT)
-                                    .show()
-                            }
-
-                        findViewById<RecyclerView>(R.id.searchRecyclerView).apply {
-                            layoutManager =
-                                LinearLayoutManager(this@SearchRestaurantsActivity)
-                            mAdapter =
-                                RestaurantDataGPSAdapter(this@SearchRestaurantsActivity,
-                                    myLat,
-                                    myLong)
-                            adapter = mAdapter
+                            restaurantData.sortBy { it.distance }
+                            mAdapter.updateRestaurantDataGPS(restaurantData)
                         }
+                        .addOnFailureListener { exception ->
+                            findViewById<ProgressBar>(R.id.searchProgressBar).visibility =
+                                View.GONE
+                            Log.w("Firebase Warning", "Error getting documents. $exception")
+                            Toast.makeText(this@SearchRestaurantsActivity,
+                                "Error retrieving data!",
+                                Toast.LENGTH_SHORT)
+                                .show()
+                        }
+
+                    findViewById<RecyclerView>(R.id.searchRecyclerView).apply {
+                        layoutManager =
+                            LinearLayoutManager(this@SearchRestaurantsActivity)
+                        mAdapter =
+                            RestaurantDataGPSAdapter(this@SearchRestaurantsActivity,
+                                myLat,
+                                myLong)
+                        adapter = mAdapter
                     }
+                }
             }
         } else {
             requestLocationPermission()

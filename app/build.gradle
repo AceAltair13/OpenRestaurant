@@ -56,4 +56,6 @@ dependencies {
     implementation 'io.github.pilgr:paperdb:2.7.1'
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
     implementation 'com.vmadalin:easypermissions-ktx:1.0.0'
+    implementation 'io.nlopez.smartlocation:library:3.3.3'
+
 }
