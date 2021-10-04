@@ -16,12 +16,15 @@
         android:theme="@style/Theme.OpenRestaurant">
         <activity
             android:name=".activity.AboutUsActivity"
+            android:parentActivityName=".activity.HomeActivity"
             android:exported="true" />
         <activity
             android:name=".activity.ShowFavouritesActivity"
+            android:parentActivityName=".activity.HomeActivity"
             android:exported="true" />
         <activity
             android:name=".activity.SearchRestaurantsActivity"
+            android:parentActivityName=".activity.HomeActivity"
             android:exported="true" />
         <activity
             android:name=".activity.HomeActivity"

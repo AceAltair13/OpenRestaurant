@@ -8,5 +8,9 @@ class SearchRestaurantsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_restaurants)
+        supportActionBar?.elevation = 0f
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.title = ""
     }
 }
