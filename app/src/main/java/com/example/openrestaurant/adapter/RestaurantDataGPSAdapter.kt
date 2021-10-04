@@ -13,7 +13,11 @@ import com.example.openrestaurant.model.RestaurantDataGPS
 import io.paperdb.Paper
 
 
-class RestaurantDataGPSAdapter(private val listener: RestaurantDataGPSItemClicked) :
+class RestaurantDataGPSAdapter(
+    private val listener: RestaurantDataGPSItemClicked,
+    private val latitude: Double,
+    private val longitude: Double,
+) :
     RecyclerView.Adapter<RestaurantDataGPSHolder>() {
     private val items: ArrayList<RestaurantDataGPS> = ArrayList()
 
@@ -32,14 +36,12 @@ class RestaurantDataGPSAdapter(private val listener: RestaurantDataGPSItemClicke
         val currentItem = items[position]
         holder.titleView.text = currentItem.name
         val results = FloatArray(1)
-        val myLatitude = Paper.book().read<Double>("LATITUDE")
-        val myLongitude = Paper.book().read<Double>("LONGITUDE")
 
         currentItem.location?.latitude?.let {
             currentItem.location?.longitude?.let { it1 ->
                 Location.distanceBetween(
                     it,
-                    it1, myLatitude, myLongitude, results
+                    it1, latitude, longitude, results
                 )
             }
         }

@@ -75,7 +75,7 @@ class SearchFragment : Fragment(), RestaurantDataGPSItemClicked {
         view.findViewById<RecyclerView>(R.id.recyclerView).apply {
             findViewById<RecyclerView>(R.id.recyclerView).layoutManager =
                 LinearLayoutManager(activity)
-            mAdapter = RestaurantDataGPSAdapter(this@SearchFragment)
+            mAdapter = RestaurantDataGPSAdapter(this@SearchFragment, 0.0, 0.0)
             findViewById<RecyclerView>(R.id.recyclerView).adapter = mAdapter
         }
     }

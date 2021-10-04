@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/favouriteActivityTitle"
+        android:id="@+id/searchActivityTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
+        android:id="@+id/btnSearchRefresh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -55,7 +55,7 @@
         app:srcCompat="@drawable/ic_wave6" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/favouriteRecyclerView"
+        android:id="@+id/searchRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:paddingStart="20dp"
@@ -67,12 +67,35 @@
         tools:listitem="@layout/restaurant_data_gps_item" />
 
     <ProgressBar
-        android:id="@+id/favouriteProgressBar"
+        android:id="@+id/searchProgressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/favouriteRecyclerView"
-        app:layout_constraintEnd_toEndOf="@+id/favouriteRecyclerView"
-        app:layout_constraintStart_toStartOf="@+id/favouriteRecyclerView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintBottom_toBottomOf="@+id/searchRecyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/searchRecyclerView"
+        app:layout_constraintStart_toStartOf="@+id/searchRecyclerView"
+        app:layout_constraintTop_toTopOf="@+id/searchRecyclerView" />
+
+    <TextView
+        android:id="@+id/searchCityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/montserrat"
+        android:includeFontPadding="false"
+        android:text="Fetching Location ..."
+        android:textColor="@color/primaryTextColor"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="14sp"
+        android:layout_height="14sp"
+        android:layout_marginTop="8dp"
+        app:tint="@color/primaryTextColor"
+        app:layout_constraintStart_toStartOf="@+id/searchActivityTitle"
+        app:layout_constraintTop_toBottomOf="@+id/searchActivityTitle"
+        app:srcCompat="@drawable/ic_baseline_location" />
 </androidx.constraintlayout.widget.ConstraintLayout>
