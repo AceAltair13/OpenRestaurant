@@ -28,10 +28,11 @@ class RestaurantMenuItemsActivity : AppCompatActivity() {
         Paper.init(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant_menu_items)
-        title = Paper.book().read("MENU_NAME")
-        supportActionBar?.subtitle = "Category Items"
+        val menuName: String = Paper.book().read("MENU_NAME")
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setDisplayShowHomeEnabled(true)
+        title = ""
+        supportActionBar?.elevation = 0f
         categoryId = Paper.book().read("MENU_ID")
         restaurantId = Paper.book().read("RESTAURANT_ID")
         recyclerView = findViewById(R.id.recyclerView3)

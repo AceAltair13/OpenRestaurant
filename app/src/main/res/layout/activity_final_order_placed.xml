@@ -107,6 +107,8 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="346dp"
         android:layout_height="554dp"
+        android:layout_marginBottom="32dp"
+        app:cardBackgroundColor="#f5f5f5"
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"

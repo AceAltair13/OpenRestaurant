@@ -48,7 +48,10 @@ class FinalOrderPlacedActivity : AppCompatActivity() {
         Paper.init(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_final_order_placed)
-        supportActionBar!!.hide()
+        title = ""
+        supportActionBar?.elevation = 0f
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.setDisplayShowHomeEnabled(true)
 
         successCardContents = findViewById(R.id.successCardContents)
         loadingCardContents = findViewById(R.id.loadingCardContents)

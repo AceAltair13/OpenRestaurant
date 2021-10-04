@@ -1,6 +1,7 @@
 package com.example.openrestaurant.activity
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +15,7 @@ import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
 import com.example.openrestaurant.R
+import io.paperdb.Paper
 
 class QRCodeActivity : AppCompatActivity() {
     private lateinit var codeScanner: CodeScanner
@@ -23,6 +25,8 @@ class QRCodeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_qrcode)
         title = "Place Order"
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.setDisplayShowHomeEnabled(true)
         val scannerView: CodeScannerView = findViewById(R.id.qrCodeScanner)
 
         codeScanner = CodeScanner(this, scannerView)
@@ -36,7 +40,14 @@ class QRCodeActivity : AppCompatActivity() {
 
         codeScanner.decodeCallback = DecodeCallback {
             runOnUiThread {
-                Toast.makeText(this, "Scan result: ${it.text}", Toast.LENGTH_LONG).show()
+                if (it.text.equals(Paper.book().read("RESTAURANT_ID"))) {
+                    startActivity(Intent(this, FinalOrderPlacedActivity::class.java))
+                } else {
+                    Toast.makeText(this,
+                        "QR Code does NOT match the restaurant!",
+                        Toast.LENGTH_LONG).show()
+                }
+
             }
         }
         codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS

@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,6 +27,7 @@ class RestaurantMenuActivity : AppCompatActivity(), RestaurantCategoryItemClicke
     private lateinit var restaurantName: String
     private lateinit var restaurantId: String
     private val db = Firebase.firestore
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Paper.init(this)
@@ -35,11 +37,13 @@ class RestaurantMenuActivity : AppCompatActivity(), RestaurantCategoryItemClicke
         restaurantId = Paper.book().read("RESTAURANT_ID")
         title = ""
         supportActionBar?.elevation = 0f
-//        supportActionBar?.subtitle = "Restaurant Menu"
         recyclerView = findViewById(R.id.recyclerView2)
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setDisplayShowHomeEnabled(true)
         findViewById<Button>(R.id.btnMenuProceed).isEnabled = OrderCart.getOrderCartSize() != 0
+        findViewById<TextView>(R.id.menuRestaurantName).text = restaurantName
+        progressBar = findViewById(R.id.menuProgressBar)
+        progressBar.visibility = View.VISIBLE
 
         var categoryData = ArrayList<RestaurantMenu>()
 
@@ -47,17 +51,16 @@ class RestaurantMenuActivity : AppCompatActivity(), RestaurantCategoryItemClicke
             .document(restaurantId).collection("menu")
             .get()
             .addOnSuccessListener { result ->
-
+                progressBar.visibility = View.GONE
                 for (document in result) {
                     var currDoc = document.toObject(RestaurantMenu::class.java)
                     currDoc.id = document.id
                     categoryData.add(currDoc)
                 }
                 menuAdapter.updateRestaurantMenu(categoryData)
-//                Toast.makeText(this, "Retrieved Category Items $categoryData", Toast.LENGTH_LONG).show()
             }
             .addOnFailureListener { exception ->
-
+                progressBar.visibility = View.GONE
                 Toast.makeText(this, "$exception", Toast.LENGTH_LONG).show()
             }
 

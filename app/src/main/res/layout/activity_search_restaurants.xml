@@ -98,4 +98,22 @@
         app:layout_constraintTop_toBottomOf="@+id/searchActivityTitle"
         app:srcCompat="@drawable/ic_baseline_location"
         app:tint="@color/primaryTextColor" />
+
+    <TextView
+        android:id="@+id/searchGpsOffErrorMsg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="GPS is currently turned OFF. Please turn it ON and refresh the page."
+        android:textAlignment="center"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="20sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
