@@ -120,6 +120,6 @@ class FinalOrderPlacedActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this, CustomerHomeActivity::class.java))
+        startActivity(Intent(this, HomeActivity::class.java))
     }
 }

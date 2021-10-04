@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="12dp"
+    android:layout_margin="4dp"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/cardview_dark_background"
     app:cardCornerRadius="10dp"
-    app:cardElevation="10dp"
+    app:cardElevation="4dp"
     app:contentPadding="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,8 +22,9 @@
             android:id="@+id/favouriteItemOrderName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
             android:text="Breakfast"
-            android:textColor="@android:color/black"
+            android:textColor="@color/primaryTextColor"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnDeleteFavourite"
@@ -36,7 +38,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_chevron_right" />
+            app:srcCompat="@drawable/ic_baseline_chevron_right"
+            app:tint="@color/primaryTextColor" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

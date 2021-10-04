@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f5f5f5"
+    android:background="#212121"
     tools:context=".activity.SearchRestaurantsActivity">
 
     <View
@@ -94,8 +94,8 @@
         android:layout_width="14sp"
         android:layout_height="14sp"
         android:layout_marginTop="8dp"
-        app:tint="@color/primaryTextColor"
         app:layout_constraintStart_toStartOf="@+id/searchActivityTitle"
         app:layout_constraintTop_toBottomOf="@+id/searchActivityTitle"
-        app:srcCompat="@drawable/ic_baseline_location" />
+        app:srcCompat="@drawable/ic_baseline_location"
+        app:tint="@color/primaryTextColor" />
 </androidx.constraintlayout.widget.ConstraintLayout>

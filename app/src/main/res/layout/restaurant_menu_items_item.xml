@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
+    app:cardBackgroundColor="@color/cardview_dark_background"
     app:cardCornerRadius="10dp"
-    app:cardElevation="3dp">
+    app:cardElevation="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -27,8 +28,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:includeFontPadding="false"
             android:text="Coffee"
-            android:textColor="@android:color/black"
+            android:textColor="@color/primaryTextColor"
             android:textSize="24sp"
             app:layout_constraintStart_toEndOf="@+id/restaurantMenuItemsItemImage"
             app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +40,9 @@
             android:id="@+id/restaurantMenuItemsItemPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
             android:text="Rs 10"
+            android:textColor="@color/primaryTextColor"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/restaurantMenuItemsItemTitle"
             app:layout_constraintTop_toBottomOf="@+id/restaurantMenuItemsItemTitle" />
@@ -47,7 +52,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/ic_baseline_add_circle_outline_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -68,7 +73,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
+            android:fontFamily="@font/montserrat_bold"
             android:text="0"
+            android:textColor="@color/primaryTextColor"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/btnItemPlus"
             app:layout_constraintEnd_toStartOf="@+id/btnItemPlus"

@@ -33,8 +33,9 @@ class RestaurantMenuActivity : AppCompatActivity(), RestaurantCategoryItemClicke
         setContentView(R.layout.activity_restaurant_menu)
         restaurantName = Paper.book().read("RESTAURANT_NAME")
         restaurantId = Paper.book().read("RESTAURANT_ID")
-        title = restaurantName
-        supportActionBar?.subtitle = "Restaurant Menu"
+        title = ""
+        supportActionBar?.elevation = 0f
+//        supportActionBar?.subtitle = "Restaurant Menu"
         recyclerView = findViewById(R.id.recyclerView2)
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setDisplayShowHomeEnabled(true)

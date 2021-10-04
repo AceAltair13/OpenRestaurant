@@ -2,6 +2,7 @@ package com.example.openrestaurant.activity
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -23,6 +24,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.vmadalin.easypermissions.EasyPermissions
 import com.vmadalin.easypermissions.dialogs.SettingsDialog
+import io.paperdb.Paper
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -40,11 +42,13 @@ class SearchRestaurantsActivity : AppCompatActivity(), RestaurantDataGPSItemClic
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Paper.init(this)
+        Paper.book().delete("cart")
         setContentView(R.layout.activity_search_restaurants)
         supportActionBar?.elevation = 0f
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.title = ""
+        title = ""
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         getRestaurantsFromGPS()
 
@@ -55,6 +59,8 @@ class SearchRestaurantsActivity : AppCompatActivity(), RestaurantDataGPSItemClic
 
     @SuppressLint("MissingPermission")
     private fun getRestaurantsFromGPS() {
+        findViewById<ProgressBar>(R.id.searchProgressBar).visibility =
+            View.VISIBLE
         if (hasLocationPermission()) {
             fusedLocationClient.lastLocation.addOnSuccessListener {
                 val geoCoder = Geocoder(this)
@@ -115,7 +121,13 @@ class SearchRestaurantsActivity : AppCompatActivity(), RestaurantDataGPSItemClic
     }
 
     override fun onClicked(item: RestaurantDataGPS) {
-        Toast.makeText(this, "${item.name}", Toast.LENGTH_SHORT).show()
+        val intent = Intent(
+            this,
+            RestaurantMenuActivity::class.java
+        )
+        Paper.book().write("RESTAURANT_NAME", item.name)
+        Paper.book().write("RESTAURANT_ID", item.id)
+        startActivity(intent)
     }
 
     private fun hasLocationPermission() =
