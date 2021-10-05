@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.openrestaurant.activity.CustomerHomeActivity
+import com.example.openrestaurant.activity.HomeActivity
 import com.example.openrestaurant.activity.QRCodeActivity
 import com.google.android.gms.location.*
 import io.paperdb.Paper
@@ -31,19 +32,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(
                 Intent(
                     this,
-                    CustomerHomeActivity::class.java,
+                    HomeActivity::class.java
                 )
             )
         }
-
-        findViewById<Button>(R.id.businessLoginButton).setOnClickListener {
-            startActivity(Intent(this, QRCodeActivity::class.java))
-        }
-
-        findViewById<Button>(R.id.btnCreateBusiness).setOnClickListener {
-            Toast.makeText(this, "Feature Coming Soon!", Toast.LENGTH_SHORT).show()
-        }
-
 
     }
 

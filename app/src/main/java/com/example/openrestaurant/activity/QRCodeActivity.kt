@@ -31,34 +31,28 @@ class QRCodeActivity : AppCompatActivity() {
 
         codeScanner = CodeScanner(this, scannerView)
 
-        codeScanner.camera = CodeScanner.CAMERA_BACK
-        codeScanner.formats = CodeScanner.ALL_FORMATS
-        codeScanner.autoFocusMode = AutoFocusMode.SAFE
-        codeScanner.scanMode = ScanMode.SINGLE
-        codeScanner.isAutoFocusEnabled = true
-        codeScanner.isFlashEnabled = false
+        codeScanner.apply {
+            camera = CodeScanner.CAMERA_BACK
+            formats = CodeScanner.ALL_FORMATS
+            scanMode = ScanMode.SINGLE
+            isAutoFocusEnabled = true
+            isFlashEnabled = true
 
-        codeScanner.decodeCallback = DecodeCallback {
-            runOnUiThread {
-                if (it.text.equals(Paper.book().read("RESTAURANT_ID"))) {
-                    startActivity(Intent(this, FinalOrderPlacedActivity::class.java))
-                } else {
-                    Toast.makeText(this,
-                        "QR Code does NOT match the restaurant!",
-                        Toast.LENGTH_LONG).show()
+            decodeCallback = DecodeCallback {
+                runOnUiThread {
+                    if (it.text.equals(Paper.book().read("RESTAURANT_ID"))) {
+                        startActivity(Intent(this@QRCodeActivity,
+                            FinalOrderPlacedActivity::class.java))
+                    } else {
+                        Toast.makeText(this@QRCodeActivity,
+                            "QR Code does NOT match the restaurant!",
+                            Toast.LENGTH_LONG).show()
+                        onResume()
+                    }
                 }
-
             }
+            errorCallback = ErrorCallback.SUPPRESS
         }
-        codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS
-            runOnUiThread {
-                Toast.makeText(
-                    this, "Camera initialization error: ${it.message}",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-        }
-
         checkPermission()
     }
 

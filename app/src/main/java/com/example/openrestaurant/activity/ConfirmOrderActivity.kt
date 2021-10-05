@@ -20,8 +20,8 @@ class ConfirmOrderActivity : AppCompatActivity() {
     private val cartItems = OrderCart.getCart()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         Paper.init(this)
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_confirm_order)
         title = ""
         actionBar?.setDisplayHomeAsUpEnabled(true)
@@ -29,8 +29,8 @@ class ConfirmOrderActivity : AppCompatActivity() {
         supportActionBar?.elevation = 0f
         recyclerView = findViewById(R.id.recyclerView4)
 
-        findViewById<TextView>(R.id.finalItemTotalCost).text = "₹ ${OrderCart.getTotalCost()}"
         findViewById<TextView>(R.id.billRestaurantName).text = Paper.book().read("RESTAURANT_NAME")
+        findViewById<TextView>(R.id.finalItemTotalCost).text = "₹ ${OrderCart.getTotalCost()}"
 
         recyclerView.apply {
             layoutManager = LinearLayoutManager(this@ConfirmOrderActivity)
