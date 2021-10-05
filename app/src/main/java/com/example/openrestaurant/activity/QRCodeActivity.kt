@@ -36,7 +36,6 @@ class QRCodeActivity : AppCompatActivity() {
             formats = CodeScanner.ALL_FORMATS
             scanMode = ScanMode.SINGLE
             isAutoFocusEnabled = true
-            isFlashEnabled = true
 
             decodeCallback = DecodeCallback {
                 runOnUiThread {

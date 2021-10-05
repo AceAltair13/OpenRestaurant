@@ -40,7 +40,7 @@ class RestaurantMenuActivity : AppCompatActivity(), RestaurantCategoryItemClicke
         recyclerView = findViewById(R.id.recyclerView2)
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setDisplayShowHomeEnabled(true)
-        findViewById<Button>(R.id.btnMenuProceed).isEnabled = OrderCart.getOrderCartSize() != 0
+        findViewById<Button>(R.id.btnMenuProceed).isEnabled = OrderCart.getCart().isNotEmpty()
         findViewById<TextView>(R.id.menuRestaurantName).text = restaurantName
         progressBar = findViewById(R.id.menuProgressBar)
         progressBar.visibility = View.VISIBLE

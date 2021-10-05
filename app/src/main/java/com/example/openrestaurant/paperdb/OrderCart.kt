@@ -34,7 +34,7 @@ class OrderCart {
             saveCart(cart)
         }
 
-        fun itemCount(cartItem: CartItem): Int {
+        fun itemCount(cartItem: CartItem): Long {
             val cart = getCart()
             val targetItem = cart.singleOrNull { it.item.id == cartItem.item.id }
             return targetItem?.quantity ?: 0
@@ -48,8 +48,8 @@ class OrderCart {
             return Paper.book().read("cart", mutableListOf())
         }
 
-        fun getOrderCartSize(): Int {
-            var cartSize = 0
+        fun getOrderCartSize(): Long {
+            var cartSize: Long = 0
             getCart().forEach {
                 cartSize += it.quantity;
             }
@@ -57,9 +57,9 @@ class OrderCart {
             return cartSize
         }
 
-        fun getTotalCost() : Int {
+        fun getTotalCost(): Long {
             var cart = getCart()
-            var cost = 0
+            var cost: Long = 0
             for (item in cart) {
                 cost += (item.item.item_price!! * item.quantity)
             }

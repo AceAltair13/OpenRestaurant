@@ -42,16 +42,14 @@ class SearchRestaurantsActivity : AppCompatActivity(), RestaurantDataGPSItemClic
     private val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         Paper.init(this)
-        Paper.book().delete("cart")
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_restaurants)
         supportActionBar?.elevation = 0f
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setDisplayShowHomeEnabled(true)
         title = ""
         getRestaurantsFromGPS()
-
         findViewById<FloatingActionButton>(R.id.btnSearchRefresh).setOnClickListener {
             getRestaurantsFromGPS()
         }
@@ -141,6 +139,7 @@ class SearchRestaurantsActivity : AppCompatActivity(), RestaurantDataGPSItemClic
             this,
             RestaurantMenuActivity::class.java
         )
+        Paper.book().delete("cart")
         Paper.book().write("RESTAURANT_NAME", item.name)
         Paper.book().write("RESTAURANT_ID", item.id)
         startActivity(intent)

@@ -63,4 +63,8 @@ class RestaurantMenuItemsActivity : AppCompatActivity() {
             adapter = itemAdapter
         }
     }
+
+    override fun onBackPressed() {
+        onSupportNavigateUp()
+    }
 }

@@ -40,6 +40,7 @@ class FinalOrderPlacedActivity : AppCompatActivity() {
         supportActionBar?.elevation = 0f
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setDisplayShowHomeEnabled(true)
+        val restaurantId = Paper.book().read<String>("RESTAURANT_ID")
 
         viewModel = ViewModelProvider(
             this,
@@ -62,7 +63,9 @@ class FinalOrderPlacedActivity : AppCompatActivity() {
         }
         cartItems["items"] = cartList
 
-        db.collection("orders")
+        db.collection("restaurants")
+            .document(restaurantId)
+            .collection("orders")
             .add(cartItems)
             .addOnSuccessListener {
                 loadingCardContents.visibility = View.GONE
@@ -79,27 +82,24 @@ class FinalOrderPlacedActivity : AppCompatActivity() {
             }
 
         btnFavourite.setOnClickListener {
-            showDialog()
+            showDialog(restaurantId)
         }
 
     }
 
-    private fun showDialog() {
+    private fun showDialog(restaurantId: String) {
         val input = LayoutInflater.from(this).inflate(R.layout.dialog_favourite, null)
         input.findViewById<TextView>(R.id.favouriteOrderId).text = "Order ID: $favouriteOrderId"
         MaterialAlertDialogBuilder(this)
-            .setTitle("Add this Order to Favourites")
+            .setTitle("Add this Order to Favourites?")
             .setView(input)
-            .setPositiveButton("Save", DialogInterface.OnClickListener { dialogInterface, i ->
+            .setPositiveButton("Add") { dialogInterface, _ ->
                 val favouriteLabel =
                     input.findViewById<TextInputEditText>(R.id.favouriteNicknameText).text.toString()
                 if (favouriteLabel.isNotEmpty()) {
-//                    val favouriteList: ArrayList<Favourite> =
-//                        Paper.book().read("favourites", ArrayList())
-//                    favouriteList.add(Favourite(favouriteOrderId, favouriteLabel))
-//                    Paper.book().write("favourites", favouriteList)
-
-                    viewModel.insertFavourite(Favourite(favouriteOrderId, favouriteLabel))
+                    viewModel.insertFavourite(Favourite(favouriteOrderId,
+                        restaurantId,
+                        favouriteLabel))
                     Toast.makeText(this,
                         "$favouriteLabel added to favourites!",
                         Toast.LENGTH_LONG)
@@ -110,10 +110,10 @@ class FinalOrderPlacedActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(this, "Label cannot be empty!", Toast.LENGTH_SHORT).show()
                 }
-            })
-            .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialogInterface, i ->
+            }
+            .setNegativeButton("Cancel") { dialogInterface, _ ->
                 dialogInterface.cancel()
-            })
+            }
             .show()
     }
 
