@@ -74,7 +74,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/searchRecyclerView"
         app:layout_constraintEnd_toEndOf="@+id/searchRecyclerView"
         app:layout_constraintStart_toStartOf="@+id/searchRecyclerView"
-        app:layout_constraintTop_toTopOf="@+id/searchRecyclerView" />
+        app:layout_constraintTop_toTopOf="@+id/searchRecyclerView"
+        android:indeterminateTint="@color/primaryTextColor"/>
 
     <TextView
         android:id="@+id/searchCityName"
