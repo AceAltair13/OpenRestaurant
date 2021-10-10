@@ -46,7 +46,7 @@ class RestaurantMenuItemsActivity : AppCompatActivity() {
             .addOnSuccessListener { result ->
                 for (document in result) {
                     progressBar.visibility = View.GONE
-                    var currDoc = document.toObject(Item::class.java)
+                    val currDoc = document.toObject(Item::class.java)
                     currDoc.id = document.id
                     items.add(currDoc)
                 }
