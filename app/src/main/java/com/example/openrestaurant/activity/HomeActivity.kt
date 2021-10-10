@@ -1,8 +1,9 @@
 package com.example.openrestaurant.activity
 
 import android.content.Intent
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Toast
 import com.example.openrestaurant.R
 import com.google.android.material.card.MaterialCardView
 

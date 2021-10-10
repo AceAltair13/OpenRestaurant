@@ -1,15 +1,17 @@
 package com.example.openrestaurant.activity
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.openrestaurant.R
 import com.example.openrestaurant.adapter.RestaurantFinalItemsAdapter
 import com.example.openrestaurant.paperdb.OrderCart
+import com.google.android.material.textfield.TextInputEditText
 import io.paperdb.Paper
 
 class ConfirmOrderActivity : AppCompatActivity() {
