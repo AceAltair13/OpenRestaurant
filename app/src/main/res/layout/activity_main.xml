@@ -1,98 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#212121">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:focusableInTouchMode="true"
-        tools:context=".MainActivity">
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.13" />
 
-        <ImageView
-            android:id="@+id/logoImage"
-            android:layout_width="wrap_content"
-            android:layout_height="400dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/open_restaurant" />
+    <Button
+        android:id="@+id/customerHomeButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:padding="16dp"
+        android:text="Get Started"
+        android:textColor="@color/primaryTextColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/openRestaurantTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/bungee_inline"
-            android:includeFontPadding="false"
-            android:text="Open Restaurant"
-            android:textColor="@color/primaryColor"
-            android:textSize="34sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logoImage" />
+    <ImageView
+        android:id="@+id/imageView27"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toTopOf="@+id/customerHomeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView28"
+        app:layout_constraintVertical_bias="0.343"
+        app:srcCompat="@drawable/ic_undraw_eating_together_re_ux62" />
 
-        <Button
-            android:id="@+id/customerLoginButton"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="45dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
-            android:paddingVertical="12dp"
-            android:text="@string/continue_as_customer"
-            android:textColor="@color/primaryTextColor"
-            app:icon="@drawable/ic_baseline_person_24"
-            app:iconGravity="textStart"
-            app:iconTint="@color/primaryTextColor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/openRestaurantTitle" />
+    <View
+        android:id="@+id/view9"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:background="@color/primaryColor"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <View
-            android:id="@+id/divider"
-            android:layout_width="100dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintBottom_toTopOf="@+id/businessLoginButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/customerLoginButton" />
+    <ImageView
+        android:id="@+id/imageView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:srcCompat="@drawable/ic_wave2" />
 
-        <Button
-            android:id="@+id/businessLoginButton"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingVertical="12dp"
-            android:text="@string/sign_in_to_business"
-            android:textColor="@color/primaryTextColor"
-            app:icon="@drawable/ic_baseline_business_center_24"
-            app:iconGravity="textStart"
-            app:iconTint="@color/primaryTextColor"
-            app:layout_constraintBottom_toTopOf="@+id/btnCreateBusiness"
-            app:layout_constraintEnd_toEndOf="@+id/customerLoginButton"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/customerLoginButton"
-            app:layout_constraintTop_toBottomOf="@+id/divider" />
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Open Restaurant"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="@+id/view9"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
-        <Button
-            android:id="@+id/btnCreateBusiness"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/create_a_business_account"
-            app:layout_constraintEnd_toEndOf="@+id/businessLoginButton"
-            app:layout_constraintStart_toStartOf="@+id/businessLoginButton"
-            app:layout_constraintTop_toBottomOf="@+id/businessLoginButton" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
 

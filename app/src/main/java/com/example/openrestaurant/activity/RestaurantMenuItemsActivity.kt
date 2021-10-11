@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +24,7 @@ class RestaurantMenuItemsActivity : AppCompatActivity() {
     private val db = Firebase.firestore
     private lateinit var progressBar: ProgressBar
     private lateinit var recyclerView: RecyclerView
+    private lateinit var menuCategory: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Paper.init(this)
@@ -37,6 +39,8 @@ class RestaurantMenuItemsActivity : AppCompatActivity() {
         restaurantId = Paper.book().read("RESTAURANT_ID")
         recyclerView = findViewById(R.id.recyclerView3)
         progressBar = findViewById(R.id.progressBar3)
+        menuCategory = findViewById(R.id.itemsCategoryName)
+        menuCategory.text = menuName
         var items = ArrayList<Item>()
 
         db.collection("restaurants")
