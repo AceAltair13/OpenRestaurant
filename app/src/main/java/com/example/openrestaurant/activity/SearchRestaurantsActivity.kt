@@ -41,7 +41,7 @@ class SearchRestaurantsActivity : AppCompatActivity(), RestaurantDataGPSItemClic
 
     private lateinit var mAdapter: RestaurantDataGPSAdapter
     private val db = Firebase.firestore
-    private val MAX_DISTANCE = 5000
+    private val MAX_DISTANCE = 1000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Paper.init(this)
