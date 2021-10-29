@@ -25,7 +25,6 @@ import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.Tasks
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -36,7 +35,6 @@ class ShowFavouritesActivity : AppCompatActivity(), FavouriteItemOnClicked {
     private lateinit var recyclerView: RecyclerView
     private lateinit var favouriteAdapter: FavouriteOrderAdapter
     private val db = Firebase.firestore
-    private lateinit var restaurantId: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Paper.init(this)
@@ -49,7 +47,6 @@ class ShowFavouritesActivity : AppCompatActivity(), FavouriteItemOnClicked {
         recyclerView = findViewById(R.id.favouriteRecyclerView)
         findViewById<TextView>(R.id.favouriteEmptyMessage).visibility = View.GONE
         findViewById<ProgressBar>(R.id.favouriteProgressBar).visibility = View.VISIBLE
-        restaurantId = Paper.book().read("RESTAURANT_ID")
 
         recyclerView.apply {
             layoutManager = LinearLayoutManager(this@ShowFavouritesActivity)
@@ -72,7 +69,7 @@ class ShowFavouritesActivity : AppCompatActivity(), FavouriteItemOnClicked {
     }
 
     override fun onClicked(favourite: Favourite) {
-
+        Paper.book().write("RESTAURANT_ID", favourite.restaurant_id)
         findViewById<ProgressBar>(R.id.favouriteProgressBar).visibility = View.VISIBLE
         val orderItems: ArrayList<OrderItem> = ArrayList()
         db.collection("restaurants")

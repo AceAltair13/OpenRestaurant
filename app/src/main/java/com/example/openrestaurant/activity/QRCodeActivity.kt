@@ -3,33 +3,31 @@ package com.example.openrestaurant.activity
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat.requestPermissions
 import androidx.core.content.ContextCompat
-import com.budiyev.android.codescanner.AutoFocusMode
-import com.budiyev.android.codescanner.CodeScanner
-import com.budiyev.android.codescanner.CodeScannerView
-import com.budiyev.android.codescanner.DecodeCallback
-import com.budiyev.android.codescanner.ErrorCallback
-import com.budiyev.android.codescanner.ScanMode
+import com.budiyev.android.codescanner.*
 import com.example.openrestaurant.R
 import io.paperdb.Paper
 
 class QRCodeActivity : AppCompatActivity() {
     private lateinit var codeScanner: CodeScanner
     private val MY_CAMERA_PERMISSION_REQUEST = 1111
+    private lateinit var restaurantID: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Paper.init(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_qrcode)
         title = "Place Order"
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setDisplayShowHomeEnabled(true)
         val scannerView: CodeScannerView = findViewById(R.id.qrCodeScanner)
-
         codeScanner = CodeScanner(this, scannerView)
+        restaurantID = Paper.book().read("RESTAURANT_ID")
 
         codeScanner.apply {
             camera = CodeScanner.CAMERA_BACK
@@ -39,10 +37,11 @@ class QRCodeActivity : AppCompatActivity() {
 
             decodeCallback = DecodeCallback {
                 runOnUiThread {
-                    if (it.text.equals(Paper.book().read("RESTAURANT_ID"))) {
+                    if (it.text.equals(restaurantID)) {
                         startActivity(Intent(this@QRCodeActivity,
                             FinalOrderPlacedActivity::class.java))
                     } else {
+                        Log.d("Restaurants IDs", "${it.text} $restaurantID")
                         Toast.makeText(this@QRCodeActivity,
                             "QR Code does NOT match the restaurant!",
                             Toast.LENGTH_LONG).show()

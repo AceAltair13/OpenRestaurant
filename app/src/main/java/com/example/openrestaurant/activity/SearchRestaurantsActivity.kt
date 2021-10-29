@@ -21,6 +21,7 @@ import com.example.openrestaurant.adapter.RestaurantDataGPSItemClicked
 import com.example.openrestaurant.model.RestaurantDataGPS
 import com.google.android.gms.location.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.vmadalin.easypermissions.EasyPermissions
@@ -40,6 +41,7 @@ class SearchRestaurantsActivity : AppCompatActivity(), RestaurantDataGPSItemClic
 
     private lateinit var mAdapter: RestaurantDataGPSAdapter
     private val db = Firebase.firestore
+    private val MAX_DISTANCE = 5000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Paper.init(this)
@@ -81,7 +83,7 @@ class SearchRestaurantsActivity : AppCompatActivity(), RestaurantDataGPSItemClic
                     // Firebase Retrieval
                     val restaurantData = ArrayList<RestaurantDataGPS>()
                     db.collection("restaurants")
-                        .get()
+                        .get(Source.SERVER)
                         .addOnSuccessListener { result ->
                             findViewById<ProgressBar>(R.id.searchProgressBar).visibility =
                                 View.GONE
@@ -101,9 +103,12 @@ class SearchRestaurantsActivity : AppCompatActivity(), RestaurantDataGPSItemClic
                                 }
                                 Log.d("Curr Lat", "$myLat")
                                 Log.d("Curr Long", "$myLong")
-                                currDoc.distance = results[0].toInt()
-                                currDoc.id = document.id
-                                restaurantData.add(currDoc)
+                                val distance = results[0].toInt()
+                                if (distance <= MAX_DISTANCE) {
+                                    currDoc.distance = distance
+                                    currDoc.id = document.id
+                                    restaurantData.add(currDoc)
+                                }
                             }
                             restaurantData.sortBy { it.distance }
                             mAdapter.updateRestaurantDataGPS(restaurantData)
@@ -113,7 +118,7 @@ class SearchRestaurantsActivity : AppCompatActivity(), RestaurantDataGPSItemClic
                                 View.GONE
                             Log.w("Firebase Warning", "Error getting documents. $exception")
                             Toast.makeText(this@SearchRestaurantsActivity,
-                                "Error retrieving data!",
+                                "Error retrieving data! Maybe check your internet?",
                                 Toast.LENGTH_SHORT)
                                 .show()
                         }
